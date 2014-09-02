@@ -1,6 +1,7 @@
 require_relative 'workout'
 require 'csv'
-
+require 'pry'
+require 'table_print'
 # create a hash of workout info from CSV
 def load_workout_data(filename)
   workouts = {}
@@ -28,4 +29,16 @@ def load_workout_data(filename)
   workouts
 end
 
-# YOUR CODE HERE
+load_data = load_workout_data('workouts.csv')
+
+# i = 0
+# @id = workouts[i][0]
+# @date = workouts[i][1][:date]
+# @exercise = workouts[i][1][:exercises]
+
+workouts = []
+load_data.each do |k, v|
+  workouts << Workout.new(k, v[:date], v[:exercises])
+end
+
+tp workouts
