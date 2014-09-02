@@ -43,16 +43,16 @@ class Workout
     duration
   end
   def calc_calories(exercises)
-    calories = 0
+    calories = 0.0
     exercises.each do |set|
       if set[:category] == "cardio" && set[:intensity] == "high"
-        calories += 10
+        calories += (10 * set[:duration_in_min])
       elsif set[:category] == "cardio" && set[:intensity] == "medium"
-        calories += 8
+        calories += (8 * set[:duration_in_min])
       elsif set[:intensity] == "low"
-        calories += 5
+        calories += (5 * set[:duration_in_min])
       else
-        calories += 6
+        calories += (6 * set[:duration_in_min])
       end
     end
     calories
